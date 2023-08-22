@@ -1,25 +1,66 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "/",
+    name: "Padre",
+    children: [
+      {
+        path: "/",
+        name: "Madre",
+        component: () => import("@/pages/AppWrapper.vue"),
+        children: [
+          {
+            path: "/",
+            name: "Main",
+            component: () => import("@/views/MainView.vue"),
+          },
+          {
+            path: "/home",
+            name: "Home",
+            component: () => import("@/views/HomeView.vue"),
+          },
+          {
+            path: "/about",
+            name: "About",
+            component: () => import("@/views/SobreNosotrosView.vue"),
+          },
+          {
+            path: "/convocatorias",
+            name: "Convocatorias",
+            component: () =>
+              import("@/views/Convocatorias/ConvocatoriasView.vue"),
+          },
+          {
+            path: "/detalleConvocatoria",
+            name: "DetalleConvocatoria",
+            component: () =>
+              import("@/views/Convocatorias/DetalleConvocatoria.vue"),
+          },
+          {
+            path: "/cursos",
+            name: "Cursos",
+            component: () => import("@/views/Cursos/CursosView.vue"),
+          },
+          {
+            path: "/detalleCurso",
+            name: "DetalleCurso",
+            component: () => import("@/views/Cursos/DetalleCurso.vue"),
+          },
+        ],
+      },
+    ],
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    path: "/:pathMatch(.*)*",
+    name: "ErrorPath",
+    component: () => import("@/pages/ErrorPath.vue"),
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
