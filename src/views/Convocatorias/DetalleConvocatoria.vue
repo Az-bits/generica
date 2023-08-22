@@ -11,9 +11,9 @@
               <ol class="edu-breadcrumb d-flex justify-content-start liststyle">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="separator"><i class="ri-arrow-drop-right-line"></i></li>
-                <li class="breadcrumb-item">
-                  <a style="cursor: pointer" @click="() => (alert())">{{
-                    Convocatoria.titulo
+                <li>
+                  <a style="cursor: pointer" @click="() => { alert() }">{{
+                    Convocatoria.tipo
                   }}</a>
                 </li>
                 <li class="separator"><i class="ri-arrow-drop-right-line"></i></li>

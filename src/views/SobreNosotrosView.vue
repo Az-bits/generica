@@ -808,6 +808,11 @@
 <script>
 import sal from 'sal.js';
 export default {
+  metaInfo: {
+    title: 'Default Title',
+    // all titles will be injected into this template
+    titleTemplate: '%s | My Awesome Webapp'
+  },
   data() {
     return {
       tipo: "Aviso",
